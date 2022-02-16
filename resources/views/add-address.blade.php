@@ -7,7 +7,7 @@
             <div class="card">
 
                 <div class="col-md-4">
-                   @include('layouts.sidebar')
+                    @include('layouts.sidebar')
                 </div>
 
                 <div class="card-body">
@@ -22,21 +22,25 @@
             </div>
         </div>
         <div class="col-md-8">
-            <h4>Hello {{ Auth::user()->name}}</h4>
-            <form action="{{ route('update-profile') }}" method="POST">
+            <h4>Address</h4>
+            <form action="{{ route('address-upload') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                <label for="">Name</label>
-                <input type="text" name="name" value= "{{ Auth::user()->name}}"class="form-control">
+                    <label for="">Street</label>
+                    <input type="text" name="street" class="form-control">
                 </div>
                 <div class="form-group">
-                <label for="">Email</label>
-                <input type="text" name="email" value="{{ Auth::user()->email}}"class="form-control">
+                    <label for="">City</label>
+                    <input type="text" name="city"  class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <div class="form-group">
+                    <label for="">State</label>
+                    <input type="text" name="state"  class="form-control">
 
+                <button class="btn btn-info">save</button>
 
             </form>
+
 
         </div>
     </div>
