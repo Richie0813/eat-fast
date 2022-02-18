@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-8">
             <h4>Food</h4>
-            <form action="{{ route('food.upload') }}" method="POST">
+            <form action="{{ route('food.upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="">Food</label>
