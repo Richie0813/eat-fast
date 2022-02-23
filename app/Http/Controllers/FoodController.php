@@ -14,10 +14,10 @@ class FoodController extends Controller
     }
     public function upload(Request $request)
     {
-$ext = $request->file('image')->getClientOriginalExtension();
-$filename = $request->tittle . time(). '.' . $ext;
+        $ext = $request->file('image')->getClientOriginalExtension();
+        $filename = $request->tittle . time() . '.' . $ext;
 
-$request->file('image')->storeAs('public/foods', $filename);
+        $request->file('image')->storeAs('public/foods', $filename);
 
         $food = new Food();
         $food->name = $request->name;
@@ -28,7 +28,12 @@ $request->file('image')->storeAs('public/foods', $filename);
         $food->save();
 
         return back();
-        // dd($request->all());
+    }
 
+    public function allFood()
+    {
+        $foods = Food::where('user_id','=', Auth::user()-> id )->latest()->get();
+
+        return view('all-food', compact('foods'));
     }
 }

@@ -23,5 +23,11 @@ class ComplainController extends Controller
         return back();
     }
 
+    public function allComplain()
+    {
+        $complains = complain::where('user_id','=', Auth::user()-> id )->latest()->get();
+
+        return view('all-complain', compact('complains'));
+    }
     //
 }
